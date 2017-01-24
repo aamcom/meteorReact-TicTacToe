@@ -45,13 +45,33 @@
     var PLAYER_ONE_SYM = 'X';
     var PLAYER_TWO_SYM = 'O';
     var currentTurn = PLAYER_ONE_SYM;
+    var lastTurn = PLAYER_TWO_SYM;
 
     var board = document.querySelector('.board');
     board.addEventListener('click', function(e) {
       e.target.innerHTML = currentTurn;
+      console.log(currentTurn);
+      lastTurn = currentTurn;
       currentTurn = (currentTurn === PLAYER_ONE_SYM) ? PLAYER_TWO_SYM : PLAYER_ONE_SYM;
-      console.log(currentTurn)
+      if (checkForWinner()){
+        alert (lastTurn+" a gagné ! ")
+      }
     });
+    function checkForWinner() {
+      var symbols = Array.prototype.slice.call(document.querySelectorAll('.square'),0)
+        .map((square)=>{
+          return square.innerHTML
+        });
+      var winningCombos = [[0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]];
+      return winningCombos.find((combo)=>{
+        if ((symbols[combo[0]] == symbols[combo[1]]) && (symbols[combo[1]] == symbols[combo[2]])) {
+          return symbols[combo[0]];
+        } else {
+          return false; 
+        }
+      })
+      //console.log(s);
+    }
   </script>
 </body>
 
