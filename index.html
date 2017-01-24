@@ -28,25 +28,38 @@
 </head>
 
 <body>
-<div id="render-target"> </div>
+  <div id="render-title"></div>
+  <div class="render-board"></div>
 
-  <div class="board">
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-    <div class="square"></div>
-  </div>
   <script>
-    var PLAYER_ONE_SYM = 'X';
-    var PLAYER_TWO_SYM = 'O';
-    var currentTurn = PLAYER_ONE_SYM;
-    var lastTurn = PLAYER_TWO_SYM;
+    var gameState = {
+      PLAYER_ONE_SYM : "X",
+      PLAYER_TWO_SYM : "O",
+      currentTurn : "X",
+      lastTurn : "O",
+      board: [
+        "","","",
+        "","","",
+        "","",""
+      ]
+    }
 
+    var render = function(state) {
+    return "<div class='board'>" +
+    "<div class='square'>" + state.board[0] + "</div>" +
+    "<div class='square'>" + state.board[1] + "</div>" +
+    "<div class='square'>" + state.board[2] + "</div>" +
+    "<div class='square'>" + state.board[3] + "</div>" +
+    "<div class='square'>" + state.board[4] + "</div>" +
+    "<div class='square'>" + state.board[5] + "</div>" +
+    "<div class='square'>" + state.board[6] + "</div>" +
+    "<div class='square'>" + state.board[7] + "</div>" +
+    "<div class='square'>" + state.board[8] + "</div>" +
+    "</div>"
+    }
+    document.querySelector('.render-board').innerHTML = render(gameState);
+    
+  /*  
     var board = document.querySelector('.board');
     board.addEventListener('click', function(e) {
       e.target.innerHTML = currentTurn;
@@ -72,6 +85,7 @@
       })
       //console.log(s);
     }
+    */
   </script>
 </body>
 
