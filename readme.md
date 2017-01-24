@@ -3,4 +3,4 @@ LevelUpTuts
 https://www.youtube.com/watch?v=ootKAwnQiP4&index=1&list=PL6klK99EwGXj6IED7wO8V9nJJIj4_vpDh
 
 npm install --save react
-
+meteor npm install --save react react-dom
