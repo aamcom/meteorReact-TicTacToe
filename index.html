@@ -1,8 +1,57 @@
 <head>
   <title>meteorReact</title>
+    <style>
+      .board {
+        display: flex;
+        width: 600px;
+        height: 600px;
+        flex-direction : row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      .square {
+        width: 200px;
+        height: 200px;
+        box-sizing: border-box;
+        border: 5px solid black; 
+        font-size: 5em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .square:hover {
+        cursor: pointer;
+        background-color: #80cd92; 
+      }
+    </style>
+
 </head>
 
-<body id="render-target">
-  
+<body>
+<div id="render-target"> </div>
+
+  <div class="board">
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+    <div class="square"></div>
+  </div>
+  <script>
+    var PLAYER_ONE_SYM = 'X';
+    var PLAYER_TWO_SYM = 'O';
+    var currentTurn = PLAYER_ONE_SYM;
+
+    var board = document.querySelector('.board');
+    board.addEventListener('click', function(e) {
+      e.target.innerHTML = currentTurn;
+      currentTurn = (currentTurn === PLAYER_ONE_SYM) ? PLAYER_TWO_SYM : PLAYER_ONE_SYM;
+      console.log(currentTurn)
+    });
+  </script>
 </body>
 
