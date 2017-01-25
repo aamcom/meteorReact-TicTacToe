@@ -29,7 +29,7 @@
 
 <body>
   <div id="render-title"></div>
-  <div class="render-board"></div>
+  <div class="render-target"></div>
 
   <script>
     var gameState = {
@@ -44,34 +44,44 @@
       ]
     }
 
-    var render = function(state) {
-    return "<div class='board'>" +
-    "<div class='square'>" + state.board[0] + "</div>" +
-    "<div class='square'>" + state.board[1] + "</div>" +
-    "<div class='square'>" + state.board[2] + "</div>" +
-    "<div class='square'>" + state.board[3] + "</div>" +
-    "<div class='square'>" + state.board[4] + "</div>" +
-    "<div class='square'>" + state.board[5] + "</div>" +
-    "<div class='square'>" + state.board[6] + "</div>" +
-    "<div class='square'>" + state.board[7] + "</div>" +
-    "<div class='square'>" + state.board[8] + "</div>" +
-    "</div>"
+    function render(state) {
+      document.querySelector(".render-target").innerHTML = "<div class='board'>" +
+      "<div class='square' data-square-id='0'>" + state.board[0] + "</div>" +
+      "<div class='square' data-square-id='1'>" + state.board[1] + "</div>" +
+      "<div class='square' data-square-id='2'>" + state.board[2] + "</div>" +
+      "<div class='square' data-square-id='3'>" + state.board[3] + "</div>" +
+      "<div class='square' data-square-id='4'>" + state.board[4] + "</div>" +
+      "<div class='square' data-square-id='5'>" + state.board[5] + "</div>" +
+      "<div class='square' data-square-id='6'>" + state.board[6] + "</div>" +
+      "<div class='square' data-square-id='7'>" + state.board[7] + "</div>" +
+      "<div class='square' data-square-id='8'>" + state.board[8] + "</div>" +
+      "</div>"
     }
-    document.querySelector('.render-board').innerHTML = render(gameState);
     
-  /*  
-    var board = document.querySelector('.board');
-    board.addEventListener('click', function(e) {
-      e.target.innerHTML = currentTurn;
-      console.log(currentTurn);
-      lastTurn = currentTurn;
-      currentTurn = (currentTurn === PLAYER_ONE_SYM) ? PLAYER_TWO_SYM : PLAYER_ONE_SYM;
+    //document.querySelector('.render-board').innerHTML = render(gameState);
+    render(gameState);
+    var boarde = document.querySelector('.board');
+    boarde.addEventListener('click', function(e) {
+      var squareIndex = parseInt(e.target.dataset['squareId'], 10);
+      gameState.board[squareIndex] = gameState.currentTurn;
+
+      gameState.lastTurn = gameState.currentTurn;
+      gameState.currentTurn = (gameState.currentTurn === gameState.PLAYER_ONE_SYM) ? gameState.PLAYER_TWO_SYM : gameState.PLAYER_ONE_SYM;
+        
       if (checkForWinner()){
-        alert (lastTurn+" a gagné ! ")
+          alert (gameState.lastTurn+" a gagné ! ")
       }
+    
+      //document.querySelector('.render-board').innerHTML = render(gameState);
+      console.log(gameState)
+      render(gameState);
     });
+
+
+    
+
     function checkForWinner() {
-      var symbols = Array.prototype.slice.call(document.querySelectorAll('.square'),0)
+      var symbols = gameState.board
         .map((square)=>{
           return square.innerHTML
         });
@@ -85,7 +95,7 @@
       })
       //console.log(s);
     }
-    */
+    
   </script>
 </body>
 
