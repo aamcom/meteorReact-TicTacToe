@@ -67,4 +67,9 @@ if(Meteor.isClient) {
     Meteor.startup(function(){
         ReactDom.render(<App />,document.getElementById("render-target"));
     })
+    console.log("Client demarré...")
+}
+if(Meteor.isServer) {
+    
+    console.log("Serveur demarré...")
 }
