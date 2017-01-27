@@ -17,8 +17,9 @@ LevelUpTuts
 https://www.youtube.com/watch?v=gbXHlGexX24&index=4&list=PL6klK99EwGXj6IED7wO8V9nJJIj4_vpDh
 
 =>
-ajouter (atmosphere js) : 
-kadira:flow router
+ajouter (atmosphere js) :  kadira:flow router
+ajouter react-mounter
+ajouter react-dom
 (pas fait encore ...)
 
 =>
